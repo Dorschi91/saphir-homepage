@@ -1,0 +1,336 @@
+:root {
+  --paper: #f2ecdf;
+  --paper-raised: #fbf8f1;
+  --ink: #262019;
+  --ink-soft: #5a5142;
+  --indigo: #21275a;
+  --indigo-soft: #4a5390;
+  --terracotta: #b5652f;
+  --line: #ddd3bd;
+  --max-width: 780px;
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-body: Optima, Candara, "Noto Sans", "Segoe UI", system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1b1710;
+    --paper-raised: #241f16;
+    --ink: #ece5d6;
+    --ink-soft: #b7ad98;
+    --indigo: #8b93d6;
+    --indigo-soft: #6a72ab;
+    --terracotta: #d99a63;
+    --line: #3a3325;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Skip-Link: nur für Tastatur-/Screenreader-Nutzung sichtbar */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--paper-raised);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+a { color: var(--indigo-soft); }
+a:hover, a:focus-visible { color: var(--terracotta); }
+a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 2px; }
+
+img { max-width: 100%; display: block; }
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Divider: small diamond, echoing the mark in the logo */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0;
+  color: var(--terracotta);
+}
+.divider::before, .divider::after {
+  content: "";
+  height: 1px;
+  width: 48px;
+  background: var(--line);
+}
+.divider span { font-size: 0.7rem; transform: rotate(45deg); display: inline-block; }
+
+/* Header */
+header.site {
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.brand img {
+  height: 34px;
+  width: auto;
+}
+
+.brand span {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.01em;
+}
+
+nav.main ul {
+  list-style: none;
+  display: flex;
+  gap: 1.4rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+nav.main a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+}
+
+nav.main a:hover { color: var(--terracotta); }
+
+/* Hero */
+.hero {
+  padding: 3.5rem 0 2.5rem;
+  text-align: center;
+}
+
+.hero img.hero-logo {
+  height: 108px;
+  width: auto;
+  margin: 0 auto 1.5rem;
+}
+
+.hero .eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 0.6rem;
+}
+
+.hero h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2.5rem;
+  color: var(--indigo);
+}
+
+.hero .tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.75rem;
+}
+
+.hero p.lead {
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 1.08rem;
+  color: var(--ink);
+}
+
+/* Sections */
+main section {
+  padding: 3rem 0;
+}
+
+section h2 {
+  font-size: 1.6rem;
+  color: var(--indigo);
+  margin-top: 0;
+}
+
+section.alt {
+  background: var(--paper-raised);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.section-inner-with-image {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.section-inner-with-image img {
+  border-radius: 3px;
+}
+
+@media (max-width: 700px) {
+  .section-inner-with-image {
+    grid-template-columns: 1fr;
+  }
+  .section-inner-with-image img {
+    order: -1;
+  }
+}
+
+/* Projekte cards */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1px;
+  margin-top: 2rem;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.project-card {
+  background: var(--paper);
+  padding: 1.4rem 1.5rem;
+  transition: background-color 0.15s ease;
+}
+
+.project-card:hover {
+  background: var(--paper-raised);
+}
+
+.project-card h3 {
+  margin-top: 0;
+  color: var(--indigo);
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  letter-spacing: 0.01em;
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+  color: var(--ink-soft);
+}
+
+/* Kontakt */
+.contact-box {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
+}
+
+.contact-box dt {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-top: 1rem;
+}
+
+.contact-box dt:first-child { margin-top: 0; }
+
+.contact-box dd {
+  margin: 0.15rem 0 0;
+  font-size: 1.05rem;
+}
+
+/* Footer */
+footer.site {
+  border-top: 1px solid var(--line);
+  padding: 1.75rem 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+footer.site .wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+footer.site a { color: var(--ink-soft); }
+footer.site a:hover { color: var(--terracotta); }
+
+footer.site nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* Legal pages */
+.legal-page main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.legal-page h1 {
+  color: var(--indigo);
+}
+
+.legal-page h2 {
+  color: var(--indigo);
+  font-size: 1.15rem;
+  margin-top: 2rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+.back-link:hover { color: var(--terracotta); }
